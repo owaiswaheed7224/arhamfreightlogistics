@@ -3,25 +3,157 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My First Page</title>
+  <title>Arham Freight Logistics</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root{
+      --brand:#0d6efd; /* primary blue - changeable */
+      --accent:#0dcaf0;
+      --dark:#0b2236;
+    }
+    .hero{
+      background:linear-gradient(90deg, rgba(13,110,253,0.08), rgba(13,202,240,0.04));
+      padding:6rem 0;
+    }
+    .logo-placeholder{width:64px;height:64px;background:var(--brand);border-radius:8px}
+    .service-card{border-radius:12px;box-shadow:0 6px 18px rgba(11,34,54,0.06)}
+    footer{background:#061426;color:#cfeefc}
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Welcome to my website</h1>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <div class="logo-placeholder"></div>
+        <div>
+          <strong>Arham Freight</strong><br>
+          <small class="text-muted">Logistics & Transport</small>
+        </div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tracking">Tracking</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h1 class="display-5">Reliable Freight & Logistics</h1>
+          <p class="lead text-muted">Domestic & international shipping — warehousing & cargo handling with fast, secure service.</p>
+          <div class="d-flex gap-2">
+            <a href="#contact" class="btn btn-primary">Get a Quote</a>
+            <a href="#services" class="btn btn-outline-primary">Our Services</a>
+          </div>
+        </div>
+        <div class="col-lg-6 text-center">
+          <!-- Placeholder image / logo -->
+          <img src="https://via.placeholder.com/420x260?text=Trucking+%26+Cargo" alt="cargo" class="img-fluid rounded" style="max-width:420px">
+        </div>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <p>This is my first index.html file.</p>
-    <a href="https://example.com" target="_blank" rel="noopener">Visit example.com</a>
-  </main>
+  <!-- SERVICES -->
+  <section id="services" class="py-5">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2>Our Services</h2>
+        <p class="text-muted">End-to-end logistics solutions tailored for your business.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="p-4 service-card h-100">
+            <h5>Road Transport</h5>
+            <p class="text-muted">Local and long-haul trucking with GPS-tracked vehicles.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 service-card h-100">
+            <h5>Air & Sea Freight</h5>
+            <p class="text-muted">Competitive rates for international air and sea cargo.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 service-card h-100">
+            <h5>Warehousing</h5>
+            <p class="text-muted">Secure storage, inventory management and fulfilment services.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <footer>
-    <p>© 2025 Your Name</p>
+  <!-- TRACKING (simple front-end) -->
+  <section id="tracking" class="py-5 bg-light">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h3>Track Your Shipment</h3>
+          <p class="text-muted">Enter your shipment ID to see the latest status.</p>
+        </div>
+        <div class="col-md-6">
+          <form class="d-flex" onsubmit="event.preventDefault(); alert('Tracking: This is a placeholder. Backend integration required.');">
+            <input class="form-control me-2" placeholder="Enter shipment ID" id="trackId">
+            <button class="btn btn-outline-primary" type="submit">Track</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <h3>Contact Us</h3>
+          <p class="text-muted">Call or email to get a quote or ask about shipments.</p>
+          <ul class="list-unstyled">
+            <li><strong>Phone:</strong> +92-XXX-XXXXXXX</li>
+            <li><strong>Email:</strong> <a href="mailto:info@arhamfreight.example">info@arhamfreight.example</a></li>
+            <li><strong>Address:</strong> Karachi, Pakistan</li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <form onsubmit="event.preventDefault(); alert('Message sent (placeholder). To make this work you need backend / Form action.');">
+            <div class="mb-3">
+              <input class="form-control" placeholder="Full name" required>
+            </div>
+            <div class="mb-3">
+              <input class="form-control" type="email" placeholder="Email" required>
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control" rows="4" placeholder="Message" required></textarea>
+            </div>
+            <button class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-4">
+    <div class="container d-flex justify-content-between align-items-center">
+      <small>© <span id="year"></span> Arham Freight Logistics. All rights reserved.</small>
+      <div>
+        <a href="#" class="text-muted me-3">Terms</a>
+        <a href="#" class="text-muted">Privacy</a>
+      </div>
+    </div>
   </footer>
 
-  <!-- Optional JavaScript -->
-  <script>
-    console.log("Page loaded");
-  </script>
+  <script>document.getElementById('year').innerText=new Date().getFullYear()</script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
