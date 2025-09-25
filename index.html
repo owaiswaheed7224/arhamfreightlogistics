@@ -7,31 +7,14 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     :root{
-      --brand:#0d6efd; /* primary blue */
+      --brand:#0d6efd; /* primary blue - changeable */
       --accent:#0dcaf0;
       --dark:#0b2236;
     }
-
-    /* HERO BACKGROUND */
-    .hero {
-      background: url("worldwide-transportation.jpg") center center/cover no-repeat;
-      position: relative;
-      color: #fff;
-      min-height: 90vh; /* full screen height */
-      display: flex;
-      align-items: center;
+    .hero{
+      background:linear-gradient(90deg, rgba(13,110,253,0.08), rgba(13,202,240,0.04));
+      padding:6rem 0;
     }
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(13,110,253,0.55); /* blue overlay */
-    }
-    .hero .content {
-      position: relative;
-      z-index: 1;
-    }
-
     .service-card{border-radius:12px;box-shadow:0 6px 18px rgba(11,34,54,0.06)}
     footer{background:#061426;color:#cfeefc}
     .logo-img{height:60px;}
@@ -73,15 +56,19 @@
 
   <!-- HERO -->
   <header class="hero">
-    <div class="container content">
+    <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6">
           <h1 class="display-5">Reliable Freight & Logistics</h1>
-          <p class="lead">Domestic & international shipping — warehousing & cargo handling with fast, secure service.</p>
+          <p class="lead text-muted">Domestic & international shipping — warehousing & cargo handling with fast, secure service.</p>
           <div class="d-flex gap-2">
             <a href="#contact" class="btn btn-primary">Get a Quote</a>
-            <a href="#services" class="btn btn-outline-light">Our Services</a>
+            <a href="#services" class="btn btn-outline-primary">Our Services</a>
           </div>
+        </div>
+        <div class="col-lg-6 text-center">
+          <!-- Updated Picture Instead of Logo -->
+          <img src="worldwide-transportation.jpg" alt="Freight Services" class="img-fluid rounded" style="max-width:400px">
         </div>
       </div>
     </div>
@@ -95,6 +82,7 @@
         <p class="text-muted">End-to-end logistics solutions tailored for your business.</p>
       </div>
       <div class="row g-4">
+        <!-- Road Transport removed -->
         <div class="col-md-6">
           <div class="p-4 service-card h-100">
             <h5>Air & Sea Freight</h5>
@@ -111,7 +99,7 @@
     </div>
   </section>
 
-  <!-- TRACKING -->
+  <!-- TRACKING (simple front-end) -->
   <section id="tracking" class="py-5 bg-light">
     <div class="container">
       <div class="row align-items-center">
