@@ -202,6 +202,9 @@
           document.getElementById("authMessage").innerText = "✅ Login Successful!";
           document.getElementById("authMessage").classList.remove("text-danger");
           document.getElementById("authMessage").classList.add("text-success");
+
+          // ✅ Redirect to dashboard
+          window.location.href = "dashboard.html";
         })
         .catch((error) => {
           document.getElementById("authMessage").innerText = error.message;
