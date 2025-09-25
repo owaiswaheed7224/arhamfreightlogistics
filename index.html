@@ -1,178 +1,186 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Arham Freight Logistics</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    :root{
-      --brand:#0d6efd; /* primary blue */
-      --accent:#0dcaf0;
-      --dark:#0b2236;
-    }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arham Freight Logistics</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root{
+      --brand:#0d6efd; /* primary blue */
+      --accent:#0dcaf0;
+      --dark:#0b2236;
+    }
 
-    /* HERO BACKGROUND */
-    .hero {
-      background: url("worldwide-transportation.png") center center/cover no-repeat; /* Updated to .png */
-      position: relative;
-      color: #fff;
-      min-height: 90vh; /* full screen height */
-      display: flex;
-      align-items: center;
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(13,110,253,0.55); /* blue overlay */
-    }
-    .hero .content {
-      position: relative;
-      z-index: 1;
-    }
+    /* HERO BACKGROUND */
+    .hero {
+      background: url("worldwide-transportation.jpg") center center/cover no-repeat;
+      position: relative;
+      color: #fff;
+      min-height: 90vh; /* full screen height */
+      display: flex;
+      align-items: center;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(13,110,253,0.55); /* blue overlay */
+    }
+    .hero .content {
+      position: relative;
+      z-index: 1;
+    }
 
-    .service-card{border-radius:12px;box-shadow:0 6px 18px rgba(11,34,54,0.06)}
-    footer{background:#061426;color:#cfeefc}
-    .logo-img{height:60px;}
-  </style>
+    .service-card{border-radius:12px;box-shadow:0 6px 18px rgba(11,34,54,0.06)}
+    footer{background:#061426;color:#cfeefc}
+    .logo-img{height:60px;}
+  </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-    <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-        <img src="Logo.png" alt="Arham Freight Logo" class="logo-img">
-        <div>
-          <strong>Arham Freight</strong><br>
-          <small class="text-muted">Courier & Logistics</small>
-        </div>
-      </a>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <!-- Logo + Company Name -->
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <img src="Logo.png" alt="Arham Freight Logo" class="logo-img">
+        <div>
+          <strong>Arham Freight</strong><br>
+          <small class="text-muted">Courier & Logistics</small>
+        </div>
+      </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <!-- Mobile toggle -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-            <div class="collapse navbar-collapse" id="navmenu">
-        <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
-          <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
-          <li class="nav-item"><a class="nav-link" href="#login">Login</a></li>
-          <li class="nav-item">
-            <a class="btn btn-primary ms-lg-3" href="#signup">Sign Up</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="#login">Login</a></li>
+          <li class="nav-item">
+            <a class="btn btn-primary ms-lg-3" href="#signup">Sign Up</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <header class="hero">
-    <div class="container content">
-      <div class="row align-items-center">
-        <div class="col-lg-6">
-          <h1 class="display-5">Reliable Freight & Logistics</h1>
-          <p class="lead">Domestic & international shipping — warehousing & cargo handling with fast, secure service.</p>
-          <div class="d-flex gap-2">
-            <a href="#contact" class="btn btn-primary">Get a Quote</a>
-            <a href="#services" class="btn btn-outline-light">Our Services</a>
-          </div>
-        </div>
-              </div>
-    </div>
-  </header>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container content">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h1 class="display-5">Reliable Freight & Logistics</h1>
+          <p class="lead">Domestic & international shipping — warehousing & cargo handling with fast, secure service.</p>
+          <div class="d-flex gap-2">
+            <a href="#contact" class="btn btn-primary">Get a Quote</a>
+            <a href="#services" class="btn btn-outline-light">Our Services</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-    <section id="services" class="py-5">
-    <div class="container">
-      <div class="text-center mb-4">
-        <h2>Our Services</h2>
-        <p class="text-muted">End-to-end logistics solutions tailored for your business.</p>
-      </div>
-      <div class="row g-4">
-        <div class="col-md-6">
-          <div class="p-4 service-card h-100">
-            <h5>Air & Sea Freight</h5>
-            <p class="text-muted">Competitive rates for international air and sea cargo.</p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="p-4 service-card h-100">
-            <h5>Warehousing</h5>
-            <p class="text-muted">Secure storage, inventory management and fulfilment services.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- SERVICES -->
+  <section id="services" class="py-5">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2>Our Services</h2>
+        <p class="text-muted">End-to-end logistics solutions tailored for your business.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="p-4 service-card h-100">
+            <h5>Air & Sea Freight</h5>
+            <p class="text-muted">Competitive rates for international air and sea cargo.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-4 service-card h-100">
+            <h5>Warehousing</h5>
+            <p class="text-muted">Secure storage, inventory management and fulfilment services.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="tracking" class="py-5 bg-light">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-6">
-          <h3>Track Your Shipment</h3>
-          <p class="text-muted">Enter your shipment ID to see the latest status.</p>
-          </div>
-        <div class="col-md-6">
-          <form class="d-flex" onsubmit="event.preventDefault(); alert('Tracking: This is a placeholder. Backend integration required.');">
-            <input class="form-control me-2" placeholder="Enter shipment ID" id="trackId">
-            <button class="btn btn-outline-primary" type="submit">Track</button>
-          </form>
-        </div>
-      </div>
-     </div>
-  </section>
+  <!-- TRACKING -->
+  <section id="tracking" class="py-5 bg-light">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h3>Track Your Shipment</h3>
+          <p class="text-muted">Enter your shipment ID to see the latest status.</p>
+        </div>
+        <div class="col-md-6">
+          <form class="d-flex" onsubmit="event.preventDefault(); alert('Tracking: This is a placeholder. Backend integration required.');">
+            <input class="form-control me-2" placeholder="Enter shipment ID" id="trackId">
+            <button class="btn btn-outline-primary" type="submit">Track</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="contact" class="py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
-          <h3>Contact Us</h3>
-          <p class="text-muted">Call or email to get a quote or ask about shipments.</p>
-          <ul class="list-unstyled">
-            <li>
-              <strong>Phone:</strong>
-              <a href="https://wa.me/923221763756" target="_blank" class="text-decoration-none">
-                +92 322 1763756
-              </a>
-            </li>
-            <li>
-              <strong>Email:</strong>
-              <a href="mailto:arhamfreightlogistics@gmail.com">arhamfreightlogistics@gmail.com</a>
-            </li>
-            <li>
-              <strong>Address:</strong> P.E.C.H.S Karachi, Pakistan
-            </li>
-          </ul>
-        </div>
-        <div class="col-lg-6">
-          <form onsubmit="event.preventDefault(); alert('Message sent (placeholder). To make this work you need backend / Form action.');">
-            <div class="mb-3">
-              <input class="form-control" placeholder="Full name" required>
-            </div>
-            <div class="mb-3">
-              <input class="form-control" type="email" placeholder="Email" required>
-            </div>
-            <div class="mb-3">
-              <textarea class="form-control" rows="4" placeholder="Message" required></textarea>
-            </div>
-            <button class="btn btn-primary">Send Message</button>
-        </div>
-      </form>
-    </div>
-    </div>
-  </section>
+  <!-- CONTACT -->
+  <section id="contact" class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <h3>Contact Us</h3>
+          <p class="text-muted">Call or email to get a quote or ask about shipments.</p>
+          <ul class="list-unstyled">
+            <li>
+              <strong>Phone:</strong>
+              <a href="https://wa.me/923221763756" target="_blank" class="text-decoration-none">
+                +92 322 1763756
+              </a>
+            </li>
+            <li>
+              <strong>Email:</strong>
+              <a href="mailto:arhamfreightlogistics@gmail.com">arhamfreightlogistics@gmail.com</a>
+            </li>
+            <li>
+              <strong>Address:</strong> P.E.C.H.S Karachi, Pakistan
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <form onsubmit="event.preventDefault(); alert('Message sent (placeholder). To make this work you need backend / Form action.');">
+            <div class="mb-3">
+              <input class="form-control" placeholder="Full name" required>
+            </div>
+            <div class="mb-3">
+              <input class="form-control" type="email" placeholder="Email" required>
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control" rows="4" placeholder="Message" required></textarea>
+            </div>
+            <button class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <footer class="py-4">
-    <div class="container d-flex justify-content-between align-items-center">
-      <small>© <span id="year"></span> Arham Freight Logistics. All rights reserved.</small>
-      <div>
-        <a href="#" class="text-muted me-3">Terms</a>
-        <a href="#" class="text-muted">Privacy</a>
-      </div>
-    </div>
-  </footer>
+  <footer class="py-4">
+    <div class="container d-flex justify-content-between align-items-center">
+      <small>© <span id="year"></span> Arham Freight Logistics. All rights reserved.</small>
+      <div>
+        <a href="#" class="text-muted me-3">Terms</a>
+        <a href="#" class="text-muted">Privacy</a>
+      </div>
+    </div>
+  </footer>
 
-  <script>document.getElementById('year').innerText=new Date().getFullYear()</script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>document.getElementById('year').innerText=new Date().getFullYear()</script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
