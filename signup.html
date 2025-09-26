@@ -58,8 +58,7 @@
   <!-- Firebase -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
-    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
+    import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
 
     // Firebase Config
     const firebaseConfig = {
@@ -74,7 +73,6 @@
     };
 
     const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
     const db = getDatabase(app);
 
     const signupForm = document.getElementById("signupForm");
@@ -88,29 +86,22 @@
       const phone = document.getElementById("phone").value;
       const password = document.getElementById("password").value;
 
-      // Create Firebase auth account
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-
-          // Save to approvals DB with pending status
-          set(ref(db, 'approvals/' + user.uid), {
-            fullName: fullName,
-            email: email,
-            phone: phone,
-            status: "pending"
-          });
-
-          // Immediately signout (until admin approves)
-          signOut(auth);
-
-          // Show success message
-          signupForm.style.display = "none";
-          successMessage.style.display = "block";
-        })
-        .catch((error) => {
-          alert(error.message);
-        });
+      // Save request into pending approvals
+      const newReqRef = push(ref(db, "approvals/pending"));
+      set(newReqRef, {
+        fullName,
+        email,
+        phone,
+        password,   // ⚠️ ideally password ko plain text me mat rakho (baad me encrypt karna hoga)
+        status: "pending",
+        createdAt: new Date().toISOString()
+      }).then(() => {
+        // Hide form, show success message
+        signupForm.style.display = "none";
+        successMessage.style.display = "block";
+      }).catch((err) => {
+        alert("Error: " + err.message);
+      });
     });
   </script>
 </body>
