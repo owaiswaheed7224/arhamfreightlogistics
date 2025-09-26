@@ -6,102 +6,141 @@
   <title>Dashboard - Arham Freight</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body { background-color: #f5f7fa; }
+    body { background-color: #f5f7fa; margin: 0; font-family: Arial, sans-serif; }
+
+    /* Sidebar */
     .sidebar {
       height: 100vh;
-      width: 220px;
+      width: 240px;
       position: fixed;
       top: 0;
       left: 0;
-      background-color: #0d6efd;
-      padding-top: 60px;
+      background: #0d6efd;
       color: #fff;
+      padding: 20px 15px;
     }
+    .sidebar .profile {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .sidebar .profile img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+    .sidebar .profile h5 {
+      margin: 0;
+      font-size: 16px;
+    }
+    .sidebar .profile small { color: #ddd; }
     .sidebar a {
       display: block;
-      padding: 12px 20px;
+      padding: 12px 15px;
+      margin: 5px 0;
       color: #fff;
       text-decoration: none;
-      margin-bottom: 2px;
-      border-radius: 5px;
-      cursor: pointer;
+      border-radius: 8px;
+      transition: 0.3s;
     }
-    .sidebar a:hover { background-color: #0b5ed7; }
-    .main-content { margin-left: 230px; padding: 20px; }
-    .navbar { background-color: #0d6efd; }
-    .navbar .logout-btn { background-color: #dc3545; border: none; color: #fff; }
-    .navbar .logout-btn:hover { background-color: #c82333; }
-    .card { border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
-    .welcome-text { color: #0b2236; }
-    .btn-action { background-color: #0dcaf0; color: #fff; }
-    .btn-action:hover { background-color: #0bb8d8; }
-    .shipment-list { max-height: 250px; overflow-y: auto; }
+    .sidebar a:hover { background: #0b5ed7; }
+    .sidebar .logout {
+      background: #dc3545;
+      margin-top: 15px;
+    }
+    .sidebar .logout:hover { background: #c82333; }
+
+    /* Main content */
+    .main-content {
+      margin-left: 260px;
+      padding: 20px;
+    }
+    .card {
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+    .stats-card {
+      text-align: center;
+      padding: 20px;
+    }
+    .stats-card h5 {
+      color: #555;
+      margin-bottom: 10px;
+    }
+    .stats-card p {
+      font-size: 28px;
+      font-weight: bold;
+      color: #0d6efd;
+    }
+    .chart-placeholder {
+      height: 250px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #aaa;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
 
   <!-- Sidebar -->
   <div class="sidebar">
-    <h4 class="text-center mb-4">Dashboard Menu</h4>
-    <a id="menuShipmentBooking">Shipment Booking</a>
-    <a id="menuSearchBooking">Searching Booking</a>
-    <a id="menuTrackShipments">Track Shipments</a>
-
-    <!-- Signup Approvals with direct links -->
-    <a href="pending.html">Pending Signups</a>
-    <a href="approved.html">Approved Signups</a>
-
-    <a id="menuRateInquiry">Rate Inquiry</a>
-    <a id="menuAccountList">Account List</a>
-  </div>
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top" style="margin-left: 230px;">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Arham Freight Dashboard</a>
-      <button class="btn logout-btn ms-auto" id="logoutBtn">Logout</button>
+    <div class="profile">
+      <img src="https://via.placeholder.com/80" alt="User">
+      <h5 id="profileName">User Name</h5>
+      <small id="profileEmail">user@email.com</small>
     </div>
-  </nav>
+    <a href="#">🏠 Dashboard</a>
+    <a href="#">📦 Shipment Booking</a>
+    <a href="#">🔍 Searching Booking</a>
+    <a href="#">🚚 Track Shipments</a>
+    <a href="pending.html">⏳ Pending Signups</a>
+    <a href="approved.html">✅ Approved Signups</a>
+    <a href="#">💰 Rate Inquiry</a>
+    <a href="#">📃 Account List</a>
+    <a href="#" class="logout" id="logoutBtn">🚪 Logout</a>
+  </div>
 
   <!-- Main Content -->
   <div class="main-content">
-    <div class="container-fluid">
-      <!-- Welcome Card -->
-      <div class="row mb-4">
-        <div class="col-md-12">
-          <div class="card p-4 text-center">
-            <h3 class="welcome-text">Welcome to Your Dashboard</h3>
-            <p class="text-muted">Logged in users only.</p>
-            <div id="userEmail" class="mt-2 fw-bold"></div>
-          </div>
+    <h3 class="mb-4">📊 Dashboard Overview</h3>
+
+    <!-- Stats Cards -->
+    <div class="row g-4 mb-4">
+      <div class="col-md-3">
+        <div class="card stats-card">
+          <h5>Total Shipments</h5>
+          <p id="totalShipments">0</p>
         </div>
       </div>
-
-      <!-- Stats Cards -->
-      <div class="row g-4 mb-4">
-        <div class="col-md-4">
-          <div class="card p-4 text-center">
-            <h5>Total Shipments</h5>
-            <p class="display-6" id="totalShipments">0</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card p-4 text-center">
-            <h5>Pending Orders</h5>
-            <p class="display-6" id="pendingOrders">0</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card p-4 text-center">
-            <h5>Profile Info</h5>
-            <p class="display-6" id="profileEmail">-</p>
-          </div>
+      <div class="col-md-3">
+        <div class="card stats-card">
+          <h5>Pending Orders</h5>
+          <p id="pendingOrders">0</p>
         </div>
       </div>
-
-      <!-- Dynamic Content Area -->
-      <div id="contentArea"></div>
+      <div class="col-md-3">
+        <div class="card stats-card">
+          <h5>Approved Signups</h5>
+          <p id="approvedSignups">0</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card stats-card">
+          <h5>Pending Signups</h5>
+          <p id="pendingSignups">0</p>
+        </div>
+      </div>
     </div>
+
+    <!-- Charts Placeholder -->
+    <div class="chart-placeholder">[ Chart 1 Placeholder ]</div>
+    <div class="chart-placeholder">[ Chart 2 Placeholder ]</div>
   </div>
 
   <!-- Firebase Scripts -->
@@ -109,7 +148,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
 
-    // ✅ Aapka Firebase Config
+    // Firebase Config
     const firebaseConfig = {
       apiKey: "AIzaSyB9VfTFlYpAjEOryx5tUx8Sq0LGKIjwgYU",
       authDomain: "arhamfreight.firebaseapp.com",
@@ -123,29 +162,21 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    const logoutBtn = document.getElementById("logoutBtn");
-    const userEmailDiv = document.getElementById("userEmail");
-    const profileEmailDiv = document.getElementById("profileEmail");
+    const profileName = document.getElementById("profileName");
+    const profileEmail = document.getElementById("profileEmail");
 
-    let currentUID = null;
-
-    // Track login state
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        currentUID = user.uid;
-        userEmailDiv.innerHTML = `<strong>Logged in as:</strong> ${user.email}`;
-        profileEmailDiv.innerText = user.email;
+        profileName.textContent = user.displayName || "User";
+        profileEmail.textContent = user.email;
       } else {
         window.location.href = "index.html";
       }
     });
 
-    // Logout
-    logoutBtn.addEventListener("click", () => {
+    document.getElementById("logoutBtn").addEventListener("click", () => {
       signOut(auth).then(() => window.location.href = "index.html");
     });
   </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
