@@ -113,8 +113,9 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
-    import { getDatabase, ref, set, push, onValue, get, child, remove } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
+    import { getDatabase, ref, set, get, remove } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
 
+    // ✅ Aapka Firebase Config
     const firebaseConfig = {
       apiKey: "AIzaSyB9VfTFlYpAjEOryx5tUx8Sq0LGKIjwgYU",
       authDomain: "arhamfreight.firebaseapp.com",
@@ -132,8 +133,6 @@
     const logoutBtn = document.getElementById("logoutBtn");
     const userEmailDiv = document.getElementById("userEmail");
     const profileEmailDiv = document.getElementById("profileEmail");
-    const totalShipmentsDiv = document.getElementById("totalShipments");
-    const pendingOrdersDiv = document.getElementById("pendingOrders");
     const contentArea = document.getElementById("contentArea");
 
     let currentUID = null;
