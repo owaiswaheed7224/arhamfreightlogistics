@@ -42,7 +42,7 @@
 
     // Load pending requests
     function loadPending() {
-      const dbRef = ref(db, "users/pending");
+      const dbRef = ref(db, "approvals");
       get(dbRef).then(snapshot => {
         if (!snapshot.exists()) {
           pendingTable.innerHTML = "<p class='text-muted'>No pending requests found.</p>";
@@ -55,7 +55,6 @@
               <th>Name</th>
               <th>Email</th>
               <th>Phone</th>
-              <th>Password</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
@@ -68,7 +67,6 @@
             <td>${user.fullName || "-"}</td>
             <td>${user.email}</td>
             <td>${user.phone || "-"}</td>
-            <td>${user.password || "-"}</td>
             <td>${user.status || "pending"}</td>
             <td>
               <button class="btn btn-success btn-sm" onclick="approveUser('${child.key}')">Approve</button>
@@ -84,11 +82,12 @@
 
     // Approve user
     window.approveUser = function(userId) {
-      const userRef = ref(db, "users/pending/" + userId);
+      const userRef = ref(db, "approvals/" + userId);
       get(userRef).then(snapshot => {
         if (snapshot.exists()) {
           const userData = snapshot.val();
-          set(ref(db, "users/approved/" + userId), userData).then(() => {
+          userData.status = "approved";
+          set(ref(db, "approved/" + userId), userData).then(() => {
             remove(userRef);
             alert("✅ User Approved!");
             loadPending();
@@ -99,7 +98,7 @@
 
     // Reject user
     window.rejectUser = function(userId) {
-      const userRef = ref(db, "users/pending/" + userId);
+      const userRef = ref(db, "approvals/" + userId);
       remove(userRef).then(() => {
         alert("❌ User Rejected!");
         loadPending();
