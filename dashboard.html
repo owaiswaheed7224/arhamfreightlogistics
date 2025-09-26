@@ -1,10 +1,13 @@
-<!doctype html>
+<!doctype html> 
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Dashboard - Arham Freight</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
     body { background-color: #f5f7fa; margin: 0; font-family: Arial, sans-serif; }
 
@@ -18,27 +21,18 @@
       background: #0d6efd;
       color: #fff;
       padding: 20px 15px;
+      transition: all 0.3s ease;
     }
-    .sidebar .profile {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+    .sidebar .profile { text-align: center; margin-bottom: 30px; }
     .sidebar .profile img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      margin-bottom: 10px;
-      object-fit: cover;
+      width: 80px; height: 80px; border-radius: 50%;
+      margin-bottom: 10px; object-fit: cover;
     }
     .sidebar .profile h5 { margin: 0; font-size: 16px; }
     .sidebar .profile small { color: #ddd; }
     .sidebar a {
-      display: block;
-      padding: 12px 15px;
-      margin: 5px 0;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
+      display: block; padding: 12px 15px; margin: 5px 0;
+      color: #fff; text-decoration: none; border-radius: 8px;
       transition: 0.3s;
     }
     .sidebar a:hover { background: #0b5ed7; }
@@ -47,6 +41,7 @@
     .main-content {
       margin-left: 260px;
       padding: 20px;
+      transition: all 0.3s ease;
     }
     .card {
       border-radius: 15px;
@@ -55,23 +50,37 @@
     .stats-card { text-align: center; padding: 20px; }
     .stats-card h5 { color: #555; margin-bottom: 10px; }
     .stats-card p {
-      font-size: 28px;
-      font-weight: bold;
-      color: #0d6efd;
+      font-size: 28px; font-weight: bold; color: #0d6efd;
     }
 
     /* Top Navbar */
     .navbar-custom {
       margin-left: 260px;
       background-color: #0d6efd;
+      transition: all 0.3s ease;
     }
     .navbar-custom .navbar-brand { color: #fff; font-weight: bold; }
     .navbar-custom .nav-link, .navbar-custom .dropdown-toggle { color: #fff; }
     .navbar-custom .dropdown-menu { right: 0; left: auto; }
+
+    /* Responsive Fix */
+    @media (max-width: 991px) {
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+      }
+      .navbar-custom {
+        margin-left: 0;
+      }
+      .main-content {
+        margin-left: 0;
+      }
+    }
   </style>
 </head>
-<body>
 
+<body>
   <!-- Sidebar -->
   <div class="sidebar">
     <div class="profile">
@@ -99,9 +108,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarMenu">
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-              ☰ Menu
-            </a>
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">☰ Menu</a>
             <ul class="dropdown-menu dropdown-menu-end">
               <li><a class="dropdown-item" href="#" id="logoutBtn">🚪 Logout</a></li>
             </ul>
@@ -175,7 +182,6 @@
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
-
     const clientName = document.getElementById("clientName");
 
     onAuthStateChanged(auth, (user) => {
