@@ -71,7 +71,11 @@
       margin-left: 260px;
       background-color: #0d6efd;
     }
-    .navbar-custom .navbar-brand { color: #fff; font-weight: bold; }
+    .navbar-custom .navbar-brand { 
+      color: #fff; 
+      font-weight: bold; 
+      font-size: 20px;
+    }
     .navbar-custom .nav-link, .navbar-custom .dropdown-toggle { color: #fff; }
     .navbar-custom .dropdown-menu { right: 0; left: auto; }
   </style>
@@ -94,11 +98,12 @@
     <a href="#">📃 Account List</a>
   </div>
 
-  <!-- Top Navbar -->
+  <!-- ✅ Top Navbar with Centered Company Name -->
   <nav class="navbar navbar-expand-lg navbar-dark navbar-custom shadow-sm fixed-top">
     <div class="container-fluid">
-      <!-- ✅ Company Name -->
-      <a class="navbar-brand">🚚 Arham Freight Logistics</a>
+      <div class="mx-auto text-center">
+        <a class="navbar-brand">🚚 Arham Freight Logistics</a>
+      </div>
       <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
