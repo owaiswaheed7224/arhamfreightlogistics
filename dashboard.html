@@ -22,16 +22,22 @@
       color: #fff;
       padding: 20px 15px;
     }
-    .sidebar .profile {
+
+    /* ✅ White Logo Box */
+    .sidebar .logo-box {
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      border: 2px solid #ddd;
       text-align: center;
-      margin-bottom: 30px;
     }
-    .sidebar .profile img {
-      width: 100%;           /* sidebar ki full width */
+    .sidebar .logo-box img {
+      width: 100%;
       height: auto;
-      border-radius: 0;      /* no circle */
       object-fit: contain;
     }
+
     .sidebar a {
       display: block;
       padding: 12px 15px;
@@ -74,7 +80,7 @@
 
   <!-- Sidebar -->
   <div class="sidebar">
-    <div class="profile">
+    <div class="logo-box">
       <!-- ✅ Correct logo path -->
       <img src="Logo.png" alt="Company Logo">
     </div>
