@@ -2,15 +2,107 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=1024, initial-scale=0.5, minimum-scale=0.3, maximum-scale=3, user-scalable=yes">
   <title>Pending Signups - Arham Freight</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+  <style>
+    body { background-color: #f5f7fa; font-family: Arial, sans-serif; }
+
+    /* Sidebar */
+    .sidebar {
+      height: 100vh;
+      width: 240px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: #0d6efd;
+      color: #fff;
+      padding: 20px 15px;
+    }
+    .sidebar .logo-box {
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      border: 2px solid #ddd;
+      text-align: center;
+    }
+    .sidebar .logo-box img { width: 100%; height: auto; object-fit: contain; }
+    .sidebar a {
+      display: block;
+      padding: 12px 15px;
+      margin: 5px 0;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+    .sidebar a:hover { background: #0b5ed7; }
+
+    /* Navbar */
+    .navbar-custom {
+      margin-left: 260px;
+      background-color: #0d6efd;
+    }
+    .navbar-custom .navbar-brand { color: #fff; font-weight: bold; }
+    .navbar-custom .nav-link, .navbar-custom .dropdown-toggle { color: #fff; }
+    .navbar-custom .dropdown-menu { right: 0; left: auto; }
+
+    /* Main Content */
+    .main-content {
+      margin-left: 260px;
+      padding: 20px;
+    }
+    .card {
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+  </style>
 </head>
-<body class="bg-light">
-  <div class="container mt-5">
-    <h3 class="mb-4 text-center">📋 Pending Signup Requests</h3>
-    <div class="card shadow-sm p-3">
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-box">
+      <img src="Logo.png" alt="Company Logo">
+    </div>
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="#">📦 Shipment Booking</a>
+    <a href="#">🔍 Searching Booking</a>
+    <a href="#">🚚 Track Shipments</a>
+    <a href="pending.html" style="background:#0b5ed7;">⏳ Pending Signups</a>
+    <a href="approved.html">✅ Approved Signups</a>
+    <a href="#">💰 Rate Inquiry</a>
+    <a href="#">📃 Account List</a>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom shadow-sm fixed-top">
+    <div class="container-fluid">
+      <div class="mx-auto text-center">
+        <a class="navbar-brand">🚚 Arham Freight Logistics</a>
+      </div>
+      <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarMenu">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">☰ Menu</a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="index.html">🚪 Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main-content" style="margin-top:70px;">
+    <div class="card p-4">
+      <h3 class="mb-4 text-center">📋 Pending Signup Requests</h3>
       <div class="table-responsive">
         <table id="pendingTable" class="table table-striped table-bordered">
           <thead class="table-primary">
@@ -32,6 +124,7 @@
     </div>
   </div>
 
+  <!-- Firebase -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
     import { getDatabase, ref, get, set, remove } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
@@ -49,10 +142,8 @@
 
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
-
     const tbody = document.getElementById("pendingBody");
 
-    // Approve user
     async function approveUser(key, user) {
       try {
         await set(ref(db, "approvals/approved/" + key), {
@@ -69,7 +160,6 @@
       }
     }
 
-    // Reject/Delete user
     async function rejectUser(key, user) {
       if (!confirm("Are you sure you want to reject this request?")) return;
       try {
@@ -82,7 +172,6 @@
       }
     }
 
-    // Load pending list
     function loadPending() {
       const dbRef = ref(db, "approvals/pending");
       get(dbRef).then(snapshot => {
@@ -125,5 +214,6 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
