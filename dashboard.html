@@ -27,14 +27,11 @@
       margin-bottom: 30px;
     }
     .sidebar .profile img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      margin-bottom: 10px;
-      object-fit: cover;
+      width: 100%;           /* sidebar ki full width */
+      height: auto;
+      border-radius: 0;      /* no circle */
+      object-fit: contain;
     }
-    .sidebar .profile h5 { margin: 0; font-size: 16px; }
-    .sidebar .profile small { color: #ddd; }
     .sidebar a {
       display: block;
       padding: 12px 15px;
@@ -78,9 +75,8 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <div class="profile">
-      <img src="https://via.placeholder.com/80" alt="User Profile" id="profileImage">
-      <h5 id="clientName">Client Name</h5>
-      <small>Profile</small>
+      <!-- ✅ Replace this with your logo -->
+      <img src="images/logo.png" alt="Company Logo">
     </div>
     <a href="#">🏠 Dashboard</a>
     <a href="#">📦 Shipment Booking</a>
@@ -179,12 +175,8 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    const clientName = document.getElementById("clientName");
-
     onAuthStateChanged(auth, (user) => {
-      if (user) {
-        clientName.textContent = user.displayName || "Client User";
-      } else {
+      if (!user) {
         window.location.href = "index.html";
       }
     });
