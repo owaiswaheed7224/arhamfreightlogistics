@@ -78,6 +78,9 @@
     }
     .navbar-custom .nav-link, .navbar-custom .dropdown-toggle { color: #fff; }
     .navbar-custom .dropdown-menu { right: 0; left: auto; }
+
+    /* Hide Admin and Client features initially */
+    .admin-only, .client-feature { display: none; }
   </style>
 </head>
 <body>
@@ -85,20 +88,24 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <div class="logo-box">
-      <!-- ✅ Correct logo path -->
       <img src="Logo.png" alt="Company Logo">
     </div>
     <a href="#">🏠 Dashboard</a>
-    <a href="#">📦 Shipment Booking</a>
-    <a href="#">🔍 Searching Booking</a>
-    <a href="#">🚚 Track Shipments</a>
-    <a href="pending.html">⏳ Pending Signups</a>
-    <a href="approved.html">✅ Approved Signups</a>
-    <a href="#">💰 Rate Inquiry</a>
-    <a href="#">📃 Account List</a>
+
+    <!-- ✅ Client Features -->
+    <a href="#" class="client-feature" id="shipBook">📦 Shipment Booking</a>
+    <a href="#" class="client-feature" id="searchBook">🔍 Searching Booking</a>
+    <a href="#" class="client-feature" id="trackShip">🚚 Track Shipments</a>
+    <a href="#" class="client-feature" id="rateInq">💰 Rate Inquiry</a>
+
+    <!-- ✅ Admin Features -->
+    <a href="pending.html" class="admin-only">⏳ Pending Signups</a>
+    <a href="approved.html" class="admin-only">✅ Approved Signups</a>
+    <a href="#" class="admin-only">📃 Account List</a>
+    <a href="manageclients.html" class="admin-only">👥 Manage Clients</a>
   </div>
 
-  <!-- ✅ Top Navbar with Centered Company Name -->
+  <!-- ✅ Top Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark navbar-custom shadow-sm fixed-top">
     <div class="container-fluid">
       <div class="mx-auto text-center">
@@ -127,43 +134,23 @@
     <!-- Stats Cards -->
     <div class="row g-4 mb-4">
       <div class="col-md-3">
-        <div class="card stats-card">
-          <h5>Total Shipments</h5>
-          <p id="totalShipments">120</p>
-        </div>
+        <div class="card stats-card"><h5>Total Shipments</h5><p>120</p></div>
       </div>
       <div class="col-md-3">
-        <div class="card stats-card">
-          <h5>Pending Orders</h5>
-          <p id="pendingOrders">35</p>
-        </div>
+        <div class="card stats-card"><h5>Pending Orders</h5><p>35</p></div>
       </div>
       <div class="col-md-3">
-        <div class="card stats-card">
-          <h5>Approved Signups</h5>
-          <p id="approvedSignups">87</p>
-        </div>
+        <div class="card stats-card"><h5>Approved Signups</h5><p>87</p></div>
       </div>
       <div class="col-md-3">
-        <div class="card stats-card">
-          <h5>Pending Signups</h5>
-          <p id="pendingSignups">10</p>
-        </div>
+        <div class="card stats-card"><h5>Pending Signups</h5><p>10</p></div>
       </div>
     </div>
 
     <!-- Charts -->
     <div class="row g-4">
-      <div class="col-md-6">
-        <div class="card p-3">
-          <canvas id="barChart"></canvas>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card p-3">
-          <canvas id="lineChart"></canvas>
-        </div>
-      </div>
+      <div class="col-md-6"><div class="card p-3"><canvas id="barChart"></canvas></div></div>
+      <div class="col-md-6"><div class="card p-3"><canvas id="lineChart"></canvas></div></div>
     </div>
   </div>
 
@@ -172,6 +159,7 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
 
     // Firebase Config
     const firebaseConfig = {
@@ -186,45 +174,62 @@
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+    const db = getFirestore(app);
 
-    onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        window.location.href = "index.html";
+    // ✅ Role Handling
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) return (window.location.href = "index.html");
+
+      const email = user.email;
+      const isAdmin = email === "owaiswaheed7224@gmail.com";
+
+      if (isAdmin) {
+        document.querySelectorAll(".admin-only").forEach(el => el.style.display = "block");
+        document.querySelectorAll(".client-feature").forEach(el => el.style.display = "block");
+      } else {
+        document.querySelectorAll(".admin-only").forEach(el => el.style.display = "none");
+
+        const ref = doc(db, "users", email);
+        const snap = await getDoc(ref);
+        if (snap.exists()) {
+          const data = snap.data();
+          const features = ["shipBook", "searchBook", "trackShip", "rateInq"];
+          features.forEach(id => {
+            document.getElementById(id).style.display = data[id] ? "block" : "none";
+          });
+        }
       }
     });
 
     document.getElementById("logoutBtn").addEventListener("click", () => {
-      signOut(auth).then(() => window.location.href = "index.html");
+      signOut(auth).then(() => (window.location.href = "index.html"));
     });
 
-    // Random Demo Charts
-    const barChart = new Chart(document.getElementById('barChart'), {
-      type: 'bar',
+    // Demo Charts
+    const barChart = new Chart(document.getElementById("barChart"), {
+      type: "bar",
       data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-        datasets: [{
-          label: 'Shipments',
-          data: [12, 19, 8, 15, 20, 14],
-          backgroundColor: '#0d6efd'
-        }]
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+        datasets: [{ label: "Shipments", data: [12, 19, 8, 15, 20, 14], backgroundColor: "#0d6efd" }]
       }
     });
 
-    const lineChart = new Chart(document.getElementById('lineChart'), {
-      type: 'line',
+    const lineChart = new Chart(document.getElementById("lineChart"), {
+      type: "line",
       data: {
-        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
         datasets: [{
-          label: 'Orders',
+          label: "Orders",
           data: [5, 9, 7, 10, 6, 12, 8],
-          borderColor: '#0dcaf0',
-          backgroundColor: 'rgba(13,202,240,0.2)',
+          borderColor: "#0dcaf0",
+          backgroundColor: "rgba(13,202,240,0.2)",
           fill: true,
           tension: 0.4
         }]
       }
     });
   </script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
+        </html>
