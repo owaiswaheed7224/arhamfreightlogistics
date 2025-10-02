@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shipment Booking</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h2>Shipment Booking Form</h2>
+  <form method="POST" action="https://script.google.com/macros/s/AKfycbzzXmeI5T8EixciSeG9ISjF4y6A_xmD6Zn-hFQ_edT11wboKAuAkAAMvi6FbmoLFYd_/exec">
+    
+    <label>Date</label>
+    <input type="date" name="DATE" required>
+
+    <label>AWB Number</label>
+    <input type="text" name="AWB NUMBER" required>
+
+    <label>Shipper Company</label>
+    <input type="text" name="SHIPPER COMPANY">
+
+    <label>Shipper Name</label>
+    <input type="text" name="SHIPPER NAME">
+
+    <label>Ship Address 1</label>
+    <input type="text" name="SHIP ADDRESS 1">
+
+    <label>Ship Address 2</label>
+    <input type="text" name="SHIP ADDRESS 2">
+
+    <label>Ship City</label>
+    <input type="text" name="SHIP CITY">
+
+    <label>Ship Country</label>
+    <input type="text" name="SHIP COUNTRY">
+
+    <label>Ship NTN</label>
+    <input type="text" name="SHIP NTN">
+
+    <label>Ship NIC</label>
+    <input type="text" name="SHIP NIC">
+
+    <label>Receiver Company</label>
+    <input type="text" name="RECEIVER COMPANY">
+
+    <label>Receiver Attention</label>
+    <input type="text" name="RECEIVER ATTENTION">
+
+    <label>Receiver Address 1</label>
+    <input type="text" name="RECEIVER ADDRESS 1">
+
+    <label>Receiver Address 2</label>
+    <input type="text" name="RECEIVER ADDRESS 2">
+
+    <label>Receiver City</label>
+    <input type="text" name="RECEIVER CITY">
+
+    <label>Receiver Country</label>
+    <input type="text" name="RECEIVER COUNTRY">
+
+    <label>Type</label>
+    <input type="text" name="TYPE">
+
+    <label>Description</label>
+    <textarea name="DESCRIPTION"></textarea>
+
+    <label>Pieces</label>
+    <input type="number" name="PIECES">
+
+    <label>Weight</label>
+    <input type="number" step="0.01" name="WEIGHT">
+
+    <label>Charge Weight</label>
+    <input type="number" step="0.01" name="CHRG WEIGHT">
+
+    <label>Dim Weight</label>
+    <input type="number" step="0.01" name="DIM WEIGHT">
+
+    <label>Length</label>
+    <input type="number" step="0.01" name="LENGTH">
+
+    <label>Height</label>
+    <input type="number" step="0.01" name="HEIGHT">
+
+    <label>Width</label>
+    <input type="number" step="0.01" name="WIDTH">
+
+    <label>Invoice Value</label>
+    <input type="number" step="0.01" name="INVOICE VALUE">
+
+    <label>Invoice Value (2)</label>
+    <input type="number" step="0.01" name="INVOICE VALUE 2">
+
+    <label>Payable</label>
+    <input type="number" step="0.01" name="PAYBLE">
+
+    <label>Total</label>
+    <input type="number" step="0.01" name="TOTAL">
+
+    <label>Balance</label>
+    <input type="number" step="0.01" name="BALANCE">
+
+    <button type="submit">Submit Booking</button>
+  </form>
+</body>
+</html>
