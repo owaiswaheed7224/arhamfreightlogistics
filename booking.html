@@ -148,7 +148,6 @@
       opacity: 0.9;
     }
 
-    /* Small tweak so Select2 fits nicely in Bootstrap flow */
     .select2-container--default .select2-selection--single {
       height: calc(2.25rem + 2px);
       padding: 6px 12px;
@@ -212,7 +211,7 @@
 
     <!-- ✅ Google Sheet Integration Added -->
     <form id="bookingForm" method="POST"
-      action="https://script.google.com/macros/s/AKfycbzwelU3JQwI6HT5VSTYyCDVy8uvAlKGSjQMC1VE8pZKqUhfddNei0UX6h4JKuxX2kzE/exec">
+      action="https://script.google.com/macros/s/AKfycbxLXpukh-jqn8Bdu4sYZW0g_KcJua3KLljz_xWGRDGgPzfBLxN830zdPoGurqahJ1Zd/exec">
 
       <!-- Shipper Details -->
       <div class="section">
@@ -270,8 +269,6 @@
       <!-- Charges -->
       <div class="section">
         <h3>Charges</h3>
-
-        <!-- Service dropdown (searchable + can add manual entries) -->
         <label>Service</label>
         <select class="form-control service-select" name="service" required>
           <option value="Air Freight">Air Freight</option>
@@ -323,17 +320,11 @@
 
   <!-- jQuery (required by Select2) -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-  <!-- Select2 JS -->
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-  <!-- Bootstrap JS (kept as original) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    // Full countries list (all over the world)
-    const countries = [
-      "Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria",
+    const countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria",
       "Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan",
       "Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cabo Verde","Cambodia",
       "Cameroon","Canada","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo (Congo-Brazzaville)","Costa Rica",
@@ -352,11 +343,9 @@
       "South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan",
       "Tajikistan","Tanzania","Thailand","Timor-Leste","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan",
       "Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu","Vatican City",
-      "Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"
-    ];
+      "Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"];
 
     $(document).ready(function () {
-      // Populate country selects
       $(".country-select").each(function () {
         const $sel = $(this);
         countries.forEach(c => {
@@ -365,27 +354,20 @@
         });
       });
 
-      // Initialize Select2 on country selects (searchable)
       $(".country-select").select2({
         placeholder: "Select country",
         allowClear: true,
         width: '100%'
       });
 
-      // Initialize Service select with Select2 and tags enabled (so user can add manual service)
       $(".service-select").select2({
         placeholder: "Select or type service (you can add custom service)",
         tags: true,
         tokenSeparators: [','],
         width: '100%'
       });
-
-      // Optional: If you'd like to preselect a country or service, you can set value like:
-      // $('.country-select[name="ship_country"]').val('Pakistan').trigger('change');
-
     });
   </script>
 
 </body>
 </html>
-
