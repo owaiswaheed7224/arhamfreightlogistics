@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport"
-    content="width=1024, initial-scale=0.5, minimum-scale=0.3, maximum=3, user-scalable=yes">
+    content="width=1024, initial-scale=0.5, minimum-scale=0.3, maximum-scale=3, user-scalable=yes">
   <title>Shipment Booking - Arham Freight</title>
 
   <!-- Bootstrap -->
@@ -14,132 +14,28 @@
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
   <style>
-    body {
-      background-color: #f5f7fa;
-      font-family: Arial, sans-serif;
-    }
-    .sidebar {
-      height: 100vh;
-      width: 240px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background: #0d6efd;
-      color: #fff;
-      padding: 20px 15px;
-    }
-    .sidebar .logo-box {
-      background: #fff;
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 25px;
-      border: 2px solid #ddd;
-      text-align: center;
-    }
-    .sidebar .logo-box img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
-    .sidebar a {
-      display: block;
-      padding: 12px 15px;
-      margin: 5px 0;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: 0.3s;
-    }
-    .sidebar a:hover {
-      background: #0b5ed7;
-    }
-    .navbar-custom {
-      margin-left: 260px;
-      background-color: #0d6efd;
-    }
-    .navbar-custom .navbar-brand {
-      color: #fff;
-      font-weight: bold;
-    }
-    .navbar-custom .nav-link,
-    .navbar-custom .dropdown-toggle {
-      color: #fff;
-    }
-    .navbar-custom .dropdown-menu {
-      right: 0;
-      left: auto;
-    }
-    .main-content {
-      margin-left: 260px;
-      padding: 20px;
-    }
-    form {
-      max-width: 950px;
-      margin: auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    }
-    .section {
-      margin-top: 20px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 15px;
-    }
-    .section h3 {
-      background: #007bff;
-      color: #fff;
-      margin: -15px -15px 15px -15px;
-      padding: 10px;
-      border-radius: 8px 8px 0 0;
-      font-size: 16px;
-    }
-    label {
-      font-weight: bold;
-      display: block;
-      margin-top: 10px;
-    }
-    input,
-    select,
-    textarea {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    .form-actions {
-      text-align: right;
-      margin-top: 20px;
-    }
-    button {
-      background: #007bff;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-left: 10px;
-    }
-    button.cancel {
-      background: #6c757d;
-    }
-    button:hover {
-      opacity: 0.9;
-    }
-    .select2-container--default .select2-selection--single {
-      height: calc(2.25rem + 2px);
-      padding: 6px 12px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    .select2-container .select2-selection--multiple {
-      min-height: calc(2.25rem + 2px);
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      padding: 4px 8px;
-    }
+    body { background-color: #f5f7fa; font-family: Arial, sans-serif; }
+    .sidebar { height: 100vh; width: 240px; position: fixed; top: 0; left: 0; background: #0d6efd; color: #fff; padding: 20px 15px; }
+    .sidebar .logo-box { background: #fff; padding: 15px; border-radius: 10px; margin-bottom: 25px; border: 2px solid #ddd; text-align: center; }
+    .sidebar .logo-box img { width: 100%; height: auto; object-fit: contain; }
+    .sidebar a { display: block; padding: 12px 15px; margin: 5px 0; color: #fff; text-decoration: none; border-radius: 8px; transition: 0.3s; }
+    .sidebar a:hover { background: #0b5ed7; }
+    .navbar-custom { margin-left: 260px; background-color: #0d6efd; }
+    .navbar-custom .navbar-brand { color: #fff; font-weight: bold; }
+    .navbar-custom .nav-link, .navbar-custom .dropdown-toggle { color: #fff; }
+    .navbar-custom .dropdown-menu { right: 0; left: auto; }
+    .main-content { margin-left: 260px; padding: 20px; }
+    form { max-width: 950px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+    .section { margin-top: 20px; border: 1px solid #ddd; border-radius: 8px; padding: 15px; }
+    .section h3 { background: #007bff; color: #fff; margin: -15px -15px 15px -15px; padding: 10px; border-radius: 8px 8px 0 0; font-size: 16px; }
+    label { font-weight: bold; display: block; margin-top: 10px; }
+    input, select, textarea { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; }
+    .form-actions { text-align: right; margin-top: 20px; }
+    button { background: #007bff; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-left: 10px; }
+    button.cancel { background: #6c757d; }
+    button:hover { opacity: 0.9; }
+    .select2-container--default .select2-selection--single { height: calc(2.25rem + 2px); padding: 6px 12px; border-radius: 5px; border: 1px solid #ccc; }
+    .select2-container .select2-selection--multiple { min-height: calc(2.25rem + 2px); border-radius: 5px; border: 1px solid #ccc; padding: 4px 8px; }
   </style>
 </head>
 
@@ -147,9 +43,7 @@
 
   <!-- Sidebar -->
   <div class="sidebar">
-    <div class="logo-box">
-      <img src="Logo.png" alt="Company Logo">
-    </div>
+    <div class="logo-box"><img src="Logo.png" alt="Company Logo"></div>
     <a href="dashboard.html">🏠 Dashboard</a>
     <a href="booking.html" style="background:#0b5ed7;">📦 Shipment Booking</a>
     <a href="#">🔍 Searching Booking</a>
@@ -166,15 +60,13 @@
       <div class="mx-auto text-center">
         <a class="navbar-brand">🚚 Arham Freight Logistics</a>
       </div>
-      <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarMenu">
+      <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarMenu">
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button"
-              data-bs-toggle="dropdown">☰ Menu</a>
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">☰ Menu</a>
             <ul class="dropdown-menu dropdown-menu-end">
               <li><a class="dropdown-item" href="index.html">🚪 Logout</a></li>
             </ul>
@@ -188,9 +80,8 @@
   <div class="main-content" style="margin-top:80px;">
     <h2 class="text-center mb-4">Shipment Booking Form</h2>
 
-    <!-- ✅ Google Sheet Integration Added -->
     <form id="bookingForm" method="POST"
-      action="https://script.google.com/macros/s/AKfycbyJItLk4I87UFvRfKo6S5vpWkRjidKD7CeHu3syBHnKDAw4sJe8jcbrwh9onB0oxAlG/exec">
+      action="https://script.google.com/macros/s/AKfycbwfaqdFiy9_nDZ4ygiw8ht0JZH5nPztCJeaHiiexeDJH7XhZopoYup49LZ1YV2PyvPQ/exec">
 
       <!-- Shipper Details -->
       <div class="section">
@@ -203,24 +94,16 @@
         <input type="text" name="shipper_company">
         <label>Shipper Name</label>
         <input type="text" name="shipper_name">
-
-        <!-- ✅ Shipper Contact Number -->
         <label>Shipper Contact Number</label>
         <input type="tel" name="shipper_contact" placeholder="+92XXXXXXXXXX" required>
-
         <label>Ship Address 1</label>
         <input type="text" name="ship_address1">
         <label>Ship Address 2</label>
         <input type="text" name="ship_address2">
         <label>Ship City</label>
         <input type="text" name="ship_city">
-
-        <!-- Searchable Country Select -->
         <label>Ship Country</label>
-        <select class="form-control country-select" name="ship_country" required>
-          <option value=""></option>
-        </select>
-
+        <select class="form-control country-select" name="ship_country" required><option value=""></option></select>
         <label>Ship NTN</label>
         <input type="text" name="ship_ntn">
         <label>Ship NIC</label>
@@ -234,11 +117,8 @@
         <input type="text" name="receiver_company">
         <label>Receiver Attention</label>
         <input type="text" name="receiver_attention">
-
-        <!-- ✅ Receiver Contact Number -->
         <label>Receiver Contact Number</label>
         <input type="tel" name="receiver_contact" placeholder="+1XXXXXXXXXX" required>
-
         <label>Receiver Address 1</label>
         <input type="text" name="receiver_address1">
         <label>Receiver Address 2</label>
@@ -247,12 +127,8 @@
         <input type="text" name="receiver_zip">
         <label>Receiver City</label>
         <input type="text" name="receiver_city">
-
-        <!-- Searchable Country Select -->
         <label>Receiver Country</label>
-        <select class="form-control country-select" name="receiver_country" required>
-          <option value=""></option>
-        </select>
+        <select class="form-control country-select" name="receiver_country" required><option value=""></option></select>
       </div>
 
       <!-- Charges -->
@@ -298,15 +174,13 @@
         <input type="number" step="0.01" name="balance">
       </div>
 
-      <!-- Buttons -->
       <div class="form-actions">
-        <button type="button" class="cancel">Cancel Booking</button>
+        <button type="button" class="cancel" onclick="document.getElementById('bookingForm').reset();">Cancel Booking</button>
         <button type="submit">Submit Booking</button>
       </div>
     </form>
   </div>
 
-  <!-- jQuery (required by Select2) -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -336,27 +210,29 @@
     $(document).ready(function () {
       $(".country-select").each(function () {
         const $sel = $(this);
-        countries.forEach(c => {
-          const opt = new Option(c, c, false, false);
-          $sel.append(opt);
+        countries.forEach(c => { $sel.append(new Option(c, c)); });
+      });
+
+      $(".country-select").select2({ placeholder: "Select country", allowClear: true, width: '100%' });
+      $(".service-select").select2({ placeholder: "Select or type service", tags: true, tokenSeparators: [','], width: '100%' });
+
+      // Form submission with AJAX
+      $("#bookingForm").submit(function (e) {
+        e.preventDefault();
+        var $form = $(this);
+        $.ajax({
+          url: $form.attr('action'),
+          method: 'POST',
+          data: $form.serialize(),
+          success: function (response) {
+            alert("✅ Booking Submitted Successfully!");
+            $form[0].reset();
+            $(".country-select, .service-select").val(null).trigger('change');
+          },
+          error: function () { alert("❌ Submission failed. Try again."); }
         });
-      });
-
-      $(".country-select").select2({
-        placeholder: "Select country",
-        allowClear: true,
-        width: '100%'
-      });
-
-      $(".service-select").select2({
-        placeholder: "Select or type service (you can add custom service)",
-        tags: true,
-        tokenSeparators: [','],
-        width: '100%'
       });
     });
   </script>
-
 </body>
 </html>
-
