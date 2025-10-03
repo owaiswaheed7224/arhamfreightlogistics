@@ -58,9 +58,6 @@
             <!-- 🔹 Login button opens popup -->
             <button class="btn btn-primary ms-lg-3" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
           </li>
-          <li class="nav-item d-none" id="logoutBtn">
-            <button class="btn btn-danger ms-lg-3" onclick="logoutUser()">Logout</button>
-          </li>
         </ul>
       </div>
     </div>
@@ -164,7 +161,7 @@
   <!-- Firebase Scripts -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } 
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } 
       from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
 
     const firebaseConfig = {
@@ -198,17 +195,11 @@
         });
     };
 
-    // Logout
-    window.logoutUser = () => {
-      signOut(auth);
-    };
-
     // Track login state
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        document.getElementById("logoutBtn").classList.remove("d-none");
-      } else {
-        document.getElementById("logoutBtn").classList.add("d-none");
+        // Agar user already login hai to direct dashboard bhej do
+        window.location.href = "dashboard.html";
       }
     });
   </script>
