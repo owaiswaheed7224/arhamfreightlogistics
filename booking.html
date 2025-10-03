@@ -138,9 +138,9 @@
         </div>
       </div>
 
-      <!-- Charges -->
+      <!-- Services Section -->
       <div class="section">
-        <h3>Charges</h3>
+        <h3>Services</h3>
         <label>Service</label>
         <select class="form-control service-select" name="service" required>
           <option value="Air Freight">Air Freight</option>
@@ -151,8 +151,17 @@
           <option value="Port to Port">Port to Port</option>
           <option value="Express">Express</option>
         </select>
+
         <label>Type</label>
-        <input type="text" name="type">
+        <select class="form-control" name="type" required>
+          <option value="DOX">DOX</option>
+          <option value="NON DOX">NON DOX</option>
+        </select>
+      </div>
+
+      <!-- Charges -->
+      <div class="section">
+        <h3>Charges</h3>
         <label>Description</label>
         <textarea name="description"></textarea>
         <label>Pieces</label>
