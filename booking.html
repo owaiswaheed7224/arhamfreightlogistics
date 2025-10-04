@@ -45,10 +45,10 @@
   <div class="sidebar">
     <div class="logo-box"><img src="Logo.png" alt="Company Logo"></div>
     <a href="dashboard.html">🏠 Dashboard</a>
-    <a href="booking.html" style="background:#0b5ed7;">📦 Shipment Booking</a>
+    <a href="booking.html">📦 Shipment Booking</a>
     <a href="#">🔍 Searching Booking</a>
     <a href="#">🚚 Track Shipments</a>
-    <a href="pending.html">⏳ Pending Signups</a>
+    <a href="pending.html" style="background:#0b5ed7;">⏳ Pending Signups</a>
     <a href="approved.html">✅ Approved Signups</a>
     <a href="#">💰 Rate Inquiry</a>
     <a href="#">📃 Account List</a>
@@ -162,8 +162,6 @@
       <!-- Charges -->
       <div class="section">
         <h3>Charges</h3>
-        <label>Description</label>
-        <textarea name="description"></textarea>
         <label>Pieces</label>
         <input type="number" name="pieces">
         <label>Weight</label>
@@ -172,6 +170,19 @@
         <input type="number" step="0.01" name="chrg_weight">
         <label>Dim Weight</label>
         <input type="number" step="0.01" name="dim_weight">
+        <label>Payable</label>
+        <input type="number" step="0.01" name="payable">
+        <label>Total</label>
+        <input type="number" step="0.01" name="total">
+        <label>Balance</label>
+        <input type="number" step="0.01" name="balance">
+      </div>
+
+      <!-- Commercial Invoice -->
+      <div class="section">
+        <h3>Commercial Invoice</h3>
+        <label>Description</label>
+        <textarea name="description"></textarea>
         <label>Length</label>
         <input type="number" step="0.01" name="length">
         <label>Height</label>
@@ -182,12 +193,6 @@
         <input type="number" step="0.01" name="invoice_value">
         <label>Invoice Value (2)</label>
         <input type="number" step="0.01" name="invoice_value2">
-        <label>Payable</label>
-        <input type="number" step="0.01" name="payable">
-        <label>Total</label>
-        <input type="number" step="0.01" name="total">
-        <label>Balance</label>
-        <input type="number" step="0.01" name="balance">
       </div>
 
       <div class="form-actions">
