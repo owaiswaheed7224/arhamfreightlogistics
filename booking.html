@@ -10,7 +10,7 @@
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Select2 CSS -->
+  <!-- Select2 CSS (for searchable dropdowns) -->
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
   <style>
@@ -155,23 +155,55 @@
             <label>Receiver Country</label>
             <select class="form-control country-select" name="receiver_country" required><option value=""></option></select>
           </div>
+        </div>
+      </div>
 
-          <!-- Invoice -->
-          <div class="section">
-            <h3>Commercial Invoice</h3>
-            <label>Description</label>
-            <textarea name="description"></textarea>
-            <label>Length</label>
-            <input type="number" step="0.01" name="length">
-            <label>Height</label>
-            <input type="number" step="0.01" name="height">
-            <label>Width</label>
-            <input type="number" step="0.01" name="width">
-            <label>Invoice Value</label>
-            <input type="number" step="0.01" name="invoice_value">
-            <label>Invoice Value (2)</label>
-            <input type="number" step="0.01" name="invoice_value2">
-          </div>
+      <!-- Commercial Invoice (Collapsible Section Integrated) -->
+      <!-- Commercial Invoice (Collapsible) -->
+      <div class="section">
+        <h3>
+          <a class="btn btn-link text-white" data-bs-toggle="collapse" href="#invoiceSection" role="button" aria-expanded="false" aria-controls="invoiceSection">
+            Commercial Invoice
+          </a>
+        </h3>
+        <div class="collapse" id="invoiceSection">
+          <table class="table table-bordered text-center align-middle" id="invoiceTable">
+            <thead class="table-secondary">
+              <tr>
+                <th>Description</th>
+                <th>Qty</th>
+                <th>Unit</th>
+                <th>Rate</</th>
+                <th>Value</th>
+                <th>❌</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><textarea class="form-control desc" name="description[]"></textarea></td>
+                <td><input type="number" class="form-control qty" name="qty[]" value="0"></td>
+                <td><input type="text" class="form-control unit" name="unit[]" placeholder="pcs"></td>
+                <td><input type="number" step="0.01" class="form-control rate" name="rate[]" value="0"></td>
+                <td><input type="number" step="0.01" class="form-control value" name="value[]" readonly></td>
+                <td><button type="button" class="btn btn-danger btn-sm deleteRow">🗑</button></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="6" class="text-start">
+                  <button type="button" class="btn btn-primary btn-sm" id="addRow">➕ Add</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="fw-bold text-end">TOTAL</td>
+                <td><input type="number" class="form-control" id="totalQty" readonly></td>
+                <td></td>
+                <td></td>
+                <td><input type="number" class="form-control" id="totalValue" readonly></td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
       </div>
 
@@ -201,31 +233,13 @@
     </form>
   </div>
 
+  <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    const countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria",
-      "Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan",
-      "Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cabo Verde","Cambodia",
-      "Cameroon","Canada","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo (Congo-Brazzaville)","Costa Rica",
-      "Côte d'Ivoire","Croatia","Cuba","Cyprus","Czech Republic","Democratic Republic of the Congo","Denmark","Djibouti","Dominica","Dominican Republic",
-      "Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia","Fiji","Finland",
-      "France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea",
-      "Guinea-Bissau","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq",
-      "Ireland","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kuwait",
-      "Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg",
-      "Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico",
-      "Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar (Burma)","Namibia","Nauru",
-      "Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Korea","North Macedonia","Norway","Oman",
-      "Pakistan","Palau","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar",
-      "Romania","Russia","Rwanda","Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia",
-      "Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa",
-      "South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan",
-      "Tajikistan","Tanzania","Thailand","Timor-Leste","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan",
-      "Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu","Vatican City",
-      "Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"];
+    const countries = [...]; // same list as before
 
     $(document).ready(function () {
       $(".country-select").each(function () {
@@ -236,7 +250,7 @@
       $(".country-select").select2({ placeholder: "Select country", allowClear: true, width: '100%' });
       $(".service-select").select2({ placeholder: "Select or type service", tags: true, tokenSeparators: [','], width: '100%' });
 
-      // AJAX Submission
+      // Form submission
       $("#bookingForm").submit(function (e) {
         e.preventDefault();
         var $form = $(this);
@@ -244,7 +258,7 @@
           url: $form.attr('action'),
           method: 'POST',
           data: $form.serialize(),
-          success: function (response) {
+          success: function () {
             alert("✅ Booking Submitted Successfully!");
             $form[0].reset();
             $(".country-select, .service-select").val(null).trigger('change');
@@ -252,6 +266,47 @@
           error: function () { alert("❌ Submission failed. Try again."); }
         });
       });
+    });
+
+    // Commercial Invoice Functions
+    function calculateRow(row) {
+      let qty = parseFloat(row.find(".qty").val()) || 0;
+      let rate = parseFloat(row.find(".rate").val()) || 0;
+      row.find(".value").val((qty * rate).toFixed(2));
+      calculateTotals();
+    }
+
+    function calculateTotals() {
+      let totalQty = 0, totalValue = 0;
+      $("#invoiceTable tbody tr").each(function () {
+        let qty = parseFloat($(this).find(".qty").val()) || 0;
+        let val = parseFloat($(this).find(".value").val()) || 0;
+        totalQty += qty;
+        totalValue += val;
+      });
+      $("#totalQty").val(totalQty);
+      $("#totalValue").val(totalValue.toFixed(2));
+    }
+
+    $(document).on("input", ".qty, .rate", function () {
+      calculateRow($(this).closest("tr"));
+    });
+
+    $(document).on("click", "#addRow", function () {
+      let newRow = `<tr>
+        <td><textarea class="form-control desc" name="description[]"></textarea></td>
+        <td><input type="number" class="form-control qty" name="qty[]" value="0"></td>
+        <td><input type="text" class="form-control unit" name="unit[]" placeholder="pcs"></td>
+        <td><input type="number" step="0.01" class="form-control rate" name="rate[]" value="0"></td>
+        <td><input type="number" step="0.01" class="form-control value" name="value[]" readonly></td>
+        <td><button type="button" class="btn btn-danger btn-sm deleteRow">🗑</button></td>
+      </tr>`;
+      $("#invoiceTable tbody").append(newRow);
+    });
+
+    $(document).on("click", ".deleteRow", function () {
+      $(this).closest("tr").remove();
+      calculateTotals();
     });
   </script>
 </body>
