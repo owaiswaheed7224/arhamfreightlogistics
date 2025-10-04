@@ -45,10 +45,10 @@
   <div class="sidebar">
     <div class="logo-box"><img src="Logo.png" alt="Company Logo"></div>
     <a href="dashboard.html">🏠 Dashboard</a>
-    <a href="booking.html">📦 Shipment Booking</a>
+    <a href="booking.html" style="background:#0b5ed7;">📦 Shipment Booking</a>
     <a href="#">🔍 Searching Booking</a>
     <a href="#">🚚 Track Shipments</a>
-    <a href="pending.html" style="background:#0b5ed7;">⏳ Pending Signups</a>
+    <a href="pending.html">⏳ Pending Signups</a>
     <a href="approved.html">✅ Approved Signups</a>
     <a href="#">💰 Rate Inquiry</a>
     <a href="#">📃 Account List</a>
@@ -112,6 +112,27 @@
             <label>Ship NIC</label>
             <input type="text" name="ship_nic">
           </div>
+
+          <!-- Services Section (under Shipper) -->
+          <div class="section">
+            <h3>Services</h3>
+            <label>Service</label>
+            <select class="form-control service-select" name="service" required>
+              <option value="Air Freight">Air Freight</option>
+              <option value="Sea Freight">Sea Freight</option>
+              <option value="Road Transport">Road Transport</option>
+              <option value="Courier">Courier</option>
+              <option value="Door to Door">Door to Door</option>
+              <option value="Port to Port">Port to Port</option>
+              <option value="Express">Express</option>
+            </select>
+
+            <label>Type</label>
+            <select class="form-control" name="type" required>
+              <option value="DOX">DOX</option>
+              <option value="NON DOX">NON DOX</option>
+            </select>
+          </div>
         </div>
 
         <!-- Receiver -->
@@ -135,31 +156,27 @@
             <label>Receiver Country</label>
             <select class="form-control country-select" name="receiver_country" required><option value=""></option></select>
           </div>
+
+          <!-- Commercial Invoice (under Receiver) -->
+          <div class="section">
+            <h3>Commercial Invoice</h3>
+            <label>Description</label>
+            <textarea name="description"></textarea>
+            <label>Length</label>
+            <input type="number" step="0.01" name="length">
+            <label>Height</label>
+            <input type="number" step="0.01" name="height">
+            <label>Width</label>
+            <input type="number" step="0.01" name="width">
+            <label>Invoice Value</label>
+            <input type="number" step="0.01" name="invoice_value">
+            <label>Invoice Value (2)</label>
+            <input type="number" step="0.01" name="invoice_value2">
+          </div>
         </div>
       </div>
 
-      <!-- Services Section -->
-      <div class="section">
-        <h3>Services</h3>
-        <label>Service</label>
-        <select class="form-control service-select" name="service" required>
-          <option value="Air Freight">Air Freight</option>
-          <option value="Sea Freight">Sea Freight</option>
-          <option value="Road Transport">Road Transport</option>
-          <option value="Courier">Courier</option>
-          <option value="Door to Door">Door to Door</option>
-          <option value="Port to Port">Port to Port</option>
-          <option value="Express">Express</option>
-        </select>
-
-        <label>Type</label>
-        <select class="form-control" name="type" required>
-          <option value="DOX">DOX</option>
-          <option value="NON DOX">NON DOX</option>
-        </select>
-      </div>
-
-      <!-- Charges -->
+      <!-- Charges (at the end) -->
       <div class="section">
         <h3>Charges</h3>
         <label>Pieces</label>
@@ -176,23 +193,6 @@
         <input type="number" step="0.01" name="total">
         <label>Balance</label>
         <input type="number" step="0.01" name="balance">
-      </div>
-
-      <!-- Commercial Invoice -->
-      <div class="section">
-        <h3>Commercial Invoice</h3>
-        <label>Description</label>
-        <textarea name="description"></textarea>
-        <label>Length</label>
-        <input type="number" step="0.01" name="length">
-        <label>Height</label>
-        <input type="number" step="0.01" name="height">
-        <label>Width</label>
-        <input type="number" step="0.01" name="width">
-        <label>Invoice Value</label>
-        <input type="number" step="0.01" name="invoice_value">
-        <label>Invoice Value (2)</label>
-        <input type="number" step="0.01" name="invoice_value2">
       </div>
 
       <div class="form-actions">
